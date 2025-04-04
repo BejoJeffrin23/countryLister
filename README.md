@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Country Data Dashboard
 
-## Getting Started
+Description:
+This project is a Next.js application built with TypeScript that fetches country data from a REST API and displays it in an interactive dashboard. It includes features such as searching, sorting, filtering, and detailed country views.
 
-First, run the development server:
+Features:
+API Integration: Fetches country data from REST Countries API with proper error handling and loading states.
 
-```bash
+Data Manipulation:
+Sorting countries by population (ascending and descending).
+
+Filtering countries by region.
+Searching for countries by name or capital.
+
+UI Components:
+* Responsive grid layout for displaying country cards.
+* Each card shows flag, name, capital, population, and region.
+* Detailed view on click, displaying additional information like currencies, languages, and time zones.
+
+State Management:
+Uses React hooks for local state management and local storage.
+
+
+Performance Optimization:
+* Lazy loading for country cards.
+* Optimized image loading using Next.js Image component.
+* Memorization to prevent unnecessary re-renders.
+
+Advanced Features:
+* Custom hook for fetching and caching API data.
+* Dark mode toggle with persistent user preference.
+
+Testing:
+* Unit tests for utility functions.
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/BejoJeffrin23/countryLister.git
+
+Navigate to the project directory:
+cd countryLister
+
+Install dependencies:
+
+npm install
+# or
+yarn install
+
+Run the development server:
+
 npm run dev
 # or
 yarn dev
+
+Open http://localhost:3000 in your browser.
+
+Testing
+
+Run tests with:
+
+npm test
 # or
-pnpm dev
-# or
-bun dev
-```
+yarn test
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build and deploy the app:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm run build
+npm start
 
-## Learn More
+Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+Next.js
+TypeScript
+React
+Tailwind CSS
+Jest & React Testing Library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Bejo Jeffrin
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live link : https://country-lister-28ju.vercel.app/
