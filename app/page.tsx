@@ -30,10 +30,14 @@ const Home: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(ITEMS_PER_LOAD);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      setDarkMode(true);
+    }
+  }, []);
 
   useEffect(() => {
     axios
