@@ -12,20 +12,28 @@ export const useFetchWithCache = <T>(url: string) => {
       if (cache[url]) {
         setData(cache[url]);
         setLoading(false);
-      } else {
-        try {
-          const res = await fetch(url);
-          if (!res.ok) throw new Error("Failed to fetch");
-          const json = await res.json();
-          cache[url] = json;
-          setData(json);
-        } catch (err: any) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error(`API Error: ${res.status} - ${res.statusText}`);
         }
+
+        const json = await res.json();
+        cache[url] = json;
+        setData(json);
+      } catch (err: any) {
+        setError(
+          "The API seems to be down or experiencing issues. This is outside our control. Please try again later."
+        );
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchData();
   }, [url]);
 
