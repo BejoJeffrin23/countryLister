@@ -12,7 +12,6 @@ import { Country } from "./types/country";
 import { sortCountries } from "./utils/functions/sortCountry";
 
 const Home = () => {
-  const [visibleCountries, setVisibleCountries] = useState<Country[]>([]);
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
@@ -21,8 +20,8 @@ const Home = () => {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
 
   const observerRef = useRef<HTMLDivElement | null>(null);
-
-  const { data, loading, error } = useFetchWithCache<Country[]>("https://restcountries.com/v3.1/all");
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+  const { data, loading, error } = useFetchWithCache<Country[]>(`${baseUrl}/api/countries`);
   const countries = data ?? [];
 
   const filtered = useMemo(() => {
@@ -36,9 +35,11 @@ const Home = () => {
     return sortCountries(filteredCountries, sortOrder);
   }, [countries, search, region, sortOrder]);
 
-  useEffect(() => {
-    setVisibleCountries(filtered.slice(0, visibleCount));
-  }, [filtered, visibleCount]);
+  const visibleCountries = useMemo(
+    () => filtered.slice(0, visibleCount),
+    [filtered, visibleCount]
+  );
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
