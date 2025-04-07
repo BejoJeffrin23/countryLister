@@ -3,8 +3,16 @@ import CountryCard from "../../components/CountryCard";
 import { Country } from "../../types/country";
 
 const mockCountry: Country = {
-  name: { common: "France" },
-  flags: { png: "https://flagcdn.com/w320/fr.png" },
+  name: {
+    common: "France",
+    official: "French Republic",
+  },
+  flags: {
+    png: "https://flagcdn.com/w320/fr.png",
+  },
+  cca3: "FRA",
+  population: 67391582,
+  region: "Europe",
 };
 
 describe("CountryCard Component", () => {
